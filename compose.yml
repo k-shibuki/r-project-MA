@@ -1,6 +1,14 @@
+version: 3
 services:
   rstudio:
     build: dev/docker
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     ports:
       - "8787:8787"
     environment:
